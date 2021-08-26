@@ -1,0 +1,43 @@
+.productWrapper {
+  position: relative;
+  transition: 0.24s;
+  cursor: pointer;
+}
+
+.productWrapper:hover {
+  box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
+  transform: translateY(-20px);
+}
+
+.product {
+  width: 354px;
+  height: 412px;
+  padding: 1rem;
+}
+
+.notInStockBox {
+  opacity: 50%;
+}
+
+.notInStock {
+  font-size: 1.5rem;
+  color: #8d8f9a;
+  z-index: 1;
+  width: 180px;
+  position: absolute;
+  top: 165px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 500;
+}

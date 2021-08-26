@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Categories from "./components/Categories/Categories";
+import ProductList from "./components/ProductList/ProductList";
 import HeaderBar from "./components/HeaderBar/HeaderBar";
 class App extends Component {
   render() {
@@ -9,7 +9,7 @@ class App extends Component {
           <HeaderBar />
         </header>
         <main>
-          <Categories />;
+          <ProductList categoryName="tech" currentCurrency="USD" />;
         </main>
       </div>
     );
