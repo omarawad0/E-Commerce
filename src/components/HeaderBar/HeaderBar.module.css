@@ -1,0 +1,26 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+
+header .navCategories {
+}
+
+.navCategories a:first-child {
+  padding-right: 32px;
+}
+
+.logo {
+  width: 120px;
+  margin: auto;
+}
+
+.cartContainer {
+  display: flex;
+}
+
+.cartContainer .cart {
+  margin-left: 22px;
+}
