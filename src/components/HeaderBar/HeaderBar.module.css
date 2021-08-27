@@ -1,19 +1,20 @@
 header {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  min-height: 8rem;
   align-items: center;
 }
 
 header .navCategories {
+  font-size: 1.6rem;
 }
 
 .navCategories a:first-child {
-  padding-right: 32px;
+  padding-right: 2em;
 }
 
 .logo {
-  width: 120px;
+  width: 12rem;
   margin: auto;
 }
 
@@ -22,5 +23,5 @@ header .navCategories {
 }
 
 .cartContainer .cart {
-  margin-left: 22px;
+  margin-left: 2.2rem;
 }

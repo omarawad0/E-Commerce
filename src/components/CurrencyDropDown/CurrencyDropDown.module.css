@@ -4,15 +4,17 @@
   position: relative;
 }
 
+.dropDownTriggerer span {
+  font-size: 1.6rem;
+}
 .dropDownMenu {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 2.5rem;
-  right: -65px;
-  width: 7.125rem;
-  z-index: 20;
-  padding-bottom: 20px;
+  top: 4rem;
+  right: -6.5rem;
+  width: 11.4rem;
+  padding-bottom: 2rem;
   background-color: #ffffff;
   box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
 }
@@ -20,9 +22,9 @@
 .dropDownMenuItem {
   background-color: #ffffff;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
-  margin: 21px 0 0 20px;
+  margin: 2.1rem 0 0 2rem;
   border: 0 solid;
   text-align: start;
 }

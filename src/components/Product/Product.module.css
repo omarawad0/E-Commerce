@@ -10,9 +10,9 @@
 }
 
 .product {
-  width: 354px;
-  height: 412px;
-  padding: 1rem;
+  width: 35.4rem;
+  min-height: 41.2rem;
+  padding: 1.6rem;
 }
 
 .notInStockBox {
@@ -20,12 +20,12 @@
 }
 
 .notInStock {
-  font-size: 1.5rem;
+  font-size: 2.4rem;
   color: #8d8f9a;
   z-index: 1;
-  width: 180px;
+  width: 18rem;
   position: absolute;
-  top: 165px;
+  top: 16.5rem;
   right: 0;
   left: 0;
   margin-left: auto;
@@ -33,11 +33,11 @@
 }
 
 .name {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 300;
 }
 
 .price {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
 }

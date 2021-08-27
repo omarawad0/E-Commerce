@@ -25,6 +25,7 @@ class CurrencyDropDown extends Component {
           tabIndex={0}
           aria-hidden
           style={{ cursor: "pointer" }}
+          className={styles.dropDownTriggerer}
           ref={triggerRef}
         >
           <span>{symbolCurrency}</span>{" "}
