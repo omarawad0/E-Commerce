@@ -30,3 +30,8 @@ export const LOAD_CATEGORIES = gql`
     }
   }
 `;
+export const getCurrencies = gql`
+  query {
+    currencies
+  }
+`;

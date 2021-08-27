@@ -1,8 +1,9 @@
 import React from "react";
 import EmptyCart from "../../Icons/EmptyCart.svg";
 import Logo from "../../Icons/Logo.svg";
-import ArrowDown from "../../Icons/ArrowDown.svg";
 import styles from "./HeaderBar.module.css";
+import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
+import DetectClickOutside from "../shared/DetectClickOutside/DetectClickOutside";
 class HeaderBar extends React.Component {
   constructor(props) {
     super(props);
@@ -19,9 +20,15 @@ class HeaderBar extends React.Component {
           <img src={Logo} alt="Arrow with green background" />
         </div>
         <div className={styles.cartContainer}>
-          <div>
-            <span>$</span> <img src={ArrowDown} alt="" />
-          </div>
+          <DetectClickOutside
+            render={(state) => (
+              <CurrencyDropDown
+                currency={this.props.currency}
+                onCurrencyClick={this.props.onCurrencyClick}
+                detect={state}
+              />
+            )}
+          />
           <div className={styles.cart}>
             <img src={EmptyCart} alt="" />
           </div>

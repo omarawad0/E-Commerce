@@ -6,20 +6,9 @@ class Product extends Component {
   render() {
     const {
       product: { gallery, name, prices, inStock, id },
-      currentCurrency,
+      currency: { currentCurrency, symbolCurrency },
     } = this.props;
     const price = prices.filter((price) => price.currency === currentCurrency);
-    const currencySymbol =
-      currentCurrency === "GBP"
-        ? "£"
-        : currentCurrency === "JPY"
-        ? "¥"
-        : currentCurrency === "RUB"
-        ? "₽"
-        : currentCurrency === "AUD"
-        ? "A$"
-        : "$";
-
     const productStyles = classnames(styles.product, {
       [styles.notInStockBox]: !inStock,
     });
@@ -42,7 +31,7 @@ class Product extends Component {
             <p className={styles.name}>{name}</p>
             <p
               className={styles.price}
-            >{`${currencySymbol} ${price[0].amount}`}</p>
+            >{`${symbolCurrency} ${price[0].amount}`}</p>
           </a>
         </div>
       </div>

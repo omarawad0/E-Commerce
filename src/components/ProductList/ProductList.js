@@ -1,12 +1,12 @@
 import React from "react";
-import { Query, Mutation } from "@apollo/client/react/components";
+import { Query } from "@apollo/client/react/components";
 import { LOAD_CATEGORIES } from "../../GraphQL/queries";
 import Product from "../Product/Product";
 import styles from "./ProductList.module.css";
-import { capitalizeFirstLetter } from "../../logic/capitalizeFirstLetter";
+import { capitalizeFirstLetter } from "../shared/utils/capitalizeFirstLetter";
 class ProductList extends React.Component {
   render() {
-    const { categoryName, currentCurrency } = this.props;
+    const { categoryName, currency } = this.props;
     return (
       <Query query={LOAD_CATEGORIES}>
         {({ loading, data }) => {
@@ -26,7 +26,7 @@ class ProductList extends React.Component {
                     <Product
                       key={product.id}
                       product={product}
-                      currentCurrency={currentCurrency}
+                      currency={currency}
                     />
                   );
                 })}
