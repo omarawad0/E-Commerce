@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ProductList from "./components/ProductList/ProductList";
 import HeaderBar from "./components/HeaderBar/HeaderBar";
 import { getCurrencySymbol } from "./components/shared/utils/getCurrencySymbol";
+import { Switch, Route, Redirect } from "react-router-dom";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,7 @@ class App extends Component {
         currentCurrency: "USD",
         symbolCurrency: "$",
       },
+      categories: this.props.categories,
     };
   }
   setCurrency = (clickedCurrency) => {
@@ -21,17 +24,39 @@ class App extends Component {
       },
     });
   };
+
   render() {
     return (
       <div>
         <header>
           <HeaderBar
+            categories={this.state.categories}
             currency={this.state.currency}
             onCurrencyClick={this.setCurrency}
           />
         </header>
         <main>
-          <ProductList categoryName="tech" currency={this.state.currency} />;
+          <Switch>
+            {this.state.categories.map((category) => {
+              return (
+                <Route
+                  key={category.name}
+                  path={`/${category.name}`}
+                  exact
+                  render={() => (
+                    <ProductList
+                      categoryName={category.name}
+                      products={category.products}
+                      currency={this.state.currency}
+                    />
+                  )}
+                />
+              );
+            })}
+            <Route path="/" exact>
+              <Redirect to="/tech" />
+            </Route>
+          </Switch>
         </main>
       </div>
     );

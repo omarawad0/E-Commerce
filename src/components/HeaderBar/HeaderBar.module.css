@@ -9,8 +9,8 @@ header .navCategories {
   font-size: 1.6rem;
 }
 
-.navCategories a:first-child {
-  padding-right: 2em;
+.navCategories a {
+  padding: 0 1.6rem 3rem 1.6rem;
 }
 
 .logo {

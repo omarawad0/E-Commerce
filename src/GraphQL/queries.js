@@ -35,3 +35,11 @@ export const getCurrencies = gql`
     currencies
   }
 `;
+
+export const getCategoriesNames = gql`
+  query {
+    categories {
+      name
+    }
+  }
+`;
