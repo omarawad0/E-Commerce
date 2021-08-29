@@ -1,11 +1,13 @@
 .productList {
   display: flex;
   flex-wrap: wrap;
-  gap: 10.3rem;
+  column-gap: 4rem;
+  row-gap: 10.3rem;
 }
 
 .categoryName {
   margin: 8rem 0 10rem 0;
+  text-transform: capitalize;
 }
 
 .categoryName h1 {
