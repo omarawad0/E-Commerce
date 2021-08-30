@@ -20,19 +20,17 @@ class Product extends Component {
           </div>
         )}
         <div className={productStyles}>
-          <a href={`# ${id}`}>
-            <img
-              width="100%"
-              height="330px"
-              style={{ objectFit: "cover" }}
-              src={gallery[0]}
-              alt={name}
-            />
-            <p className={styles.name}>{name}</p>
-            <p
-              className={styles.price}
-            >{`${symbolCurrency} ${price[0].amount}`}</p>
-          </a>
+          <img
+            width="100%"
+            height="330px"
+            style={{ objectFit: "cover" }}
+            src={gallery[0]}
+            alt={name}
+          />
+          <p className={styles.name}>{name}</p>
+          <p
+            className={styles.price}
+          >{`${symbolCurrency} ${price[0].amount}`}</p>
         </div>
       </div>
     );

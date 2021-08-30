@@ -5,6 +5,10 @@
   border: 0;
   cursor: pointer;
 }
+
+.btn[disabled] {
+  cursor: not-allowed;
+}
 /* VARIANTS */
 .btnPrimary {
   border: 1px solid #1d1f22;
