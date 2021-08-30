@@ -1,0 +1,97 @@
+.pageContainer {
+  margin-top: 8.2rem;
+  display: flex;
+}
+
+/*Gallery*/
+.galleryContainer {
+  display: flex;
+}
+.previewImages {
+  width: 8rem;
+  margin-right: 4.4rem;
+}
+.smallImage {
+  width: 100%;
+  height: 8rem;
+  object-fit: contain;
+  padding-bottom: 3.2rem;
+  cursor: pointer;
+}
+
+.smallImage:hover {
+  box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
+}
+
+.largeImage img {
+  width: 61rem;
+  height: 51rem;
+  object-fit: contain;
+}
+
+/*Product Information*/
+
+.productInfo {
+  width: 29.2rem;
+  margin-left: 10rem;
+}
+
+.productInfo h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.productInfo h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 1.6rem 0rem 4rem 0rem;
+}
+
+.attribute {
+  margin-bottom: 0.8rem;
+}
+
+.attribute p,
+.price .priceHeader {
+  font-family: "Roboto Condensed";
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+.itemsContainer {
+  display: flex;
+  column-gap: 1.2rem;
+}
+
+.priceAmount {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0rem 0rem 2rem 0rem;
+}
+
+.description {
+  font-family: "Roboto";
+  font-size: 1.6rem;
+  margin: 4rem 0rem 1rem 0rem;
+}
+
+.itemsContainer input[type="radio"] {
+  opacity: 0;
+  display: none;
+  width: 0;
+}
+
+.itemsContainer label {
+  cursor: pointer;
+}
+
+.itemsContainer input[type="radio"]:checked + label > button {
+  background-color: #1d1f22;
+  color: #ffffff;
+}
+
+/*Swatch attribute*/
+.itemsContainer input[type="radio"]:checked + label > span {
+  padding: 0.5em;
+}

@@ -3,6 +3,7 @@ import ProductList from "./components/ProductList/ProductList";
 import HeaderBar from "./components/HeaderBar/HeaderBar";
 import { getCurrencySymbol } from "./components/shared/utils/getCurrencySymbol";
 import { Switch, Route, Redirect } from "react-router-dom";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class App extends Component {
         currentCurrency: "USD",
         symbolCurrency: "$",
       },
+      cart: [],
+
       categories: this.props.categories,
     };
   }
@@ -25,7 +28,13 @@ class App extends Component {
     });
   };
 
+  setCart = (addedToCart) => {
+    this.setState({
+      cart: [...this.state.cart, addedToCart],
+    });
+  };
   render() {
+    console.log(this.state.cart);
     return (
       <div>
         <header>
@@ -53,6 +62,23 @@ class App extends Component {
                 />
               );
             })}
+            {this.state.categories.map((category) => {
+              return (
+                <Route
+                  key={category.name}
+                  path={`/${category.name}/:productId`}
+                  exact
+                  render={({ match }) => (
+                    <ProductPage
+                      match={match}
+                      currency={this.state.currency}
+                      setGlobalCart={this.setCart}
+                    />
+                  )}
+                />
+              );
+            })}
+
             <Route path="/" exact>
               <Redirect to="/tech" />
             </Route>
