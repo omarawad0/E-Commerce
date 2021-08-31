@@ -3,7 +3,6 @@ import classnames from "classnames";
 import styles from "./Button.module.css";
 class Button extends Component {
   render() {
-    /* variant, isSelected, isIcon, size, children, onClick, id */
     const {
       isIcon,
       variant,
@@ -13,20 +12,22 @@ class Button extends Component {
       stylesProps,
       buttonType,
       onClick,
-      isDisabled,
+      isSelected,
     } = this.props;
-    const btnClasses = classnames(styles.btn, stylesProps, {
+    const btnClasses = classnames(styles.btn, {
       [styles.btnPrimary]: variant === "primary",
       [styles.btnSecondary]: variant === "secondary",
-      [styles.btnVerySmall]: size === "verySmall",
+      [styles.btnMini]: size === "mini",
       [styles.btnSmall]: size === "small",
       [styles.btnMedium]: size === "medium",
       [styles.btnLarge]: size === "large",
       [styles.btnFullWidth]: size === "fullWidth",
+      [styles.miniBtnSelected]: size === "mini" && isSelected,
+      [styles.mediumBtnSelected]: size === "medium" && isSelected,
     });
 
     const iconClasses = classnames({
-      [styles.iconVerySmall]: size === "verySmall",
+      [styles.iconMini]: size === "mini",
       [styles.iconSmall]: size === "small",
     });
     return (
@@ -35,7 +36,6 @@ class Button extends Component {
         type={buttonType}
         className={btnClasses}
         id={id}
-        disabled={isDisabled}
         style={stylesProps}
       >
         {isIcon ? (

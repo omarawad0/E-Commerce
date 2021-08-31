@@ -4,7 +4,7 @@ import { getProduct } from "../../GraphQL/queries";
 import Button from "../shared/Button/Button";
 
 import styles from "./ProductPage.module.css";
-import SwatchAttribute from "../shared/SwatchAttribute/SwatchAttribute";
+import Circle from "../shared/Circle/Circle";
 class ProductPage extends Component {
   constructor(props) {
     super(props);
@@ -18,24 +18,16 @@ class ProductPage extends Component {
         image: "",
         prices: [],
         quantity: 1,
-        cartAttributes: [
-          {
-            attributeId: "",
-            attributeType: "",
-            items: {},
-          },
-        ],
+        cartAttributes: [],
       },
-
-      isFormFilled: false,
     };
   }
 
   handleCartChange = ({
-    items,
+    selectedItem,
     attributeId,
     attributeType,
-    attributesLength,
+    attributeName,
   }) => {
     const rest = this.state.productCart.cartAttributes.filter((attribute) => {
       return (
@@ -43,39 +35,60 @@ class ProductPage extends Component {
       );
     });
 
-    this.setState(
-      {
-        productCart: {
-          ...this.state.productCart,
-          cartAttributes: [...rest, { attributeId, attributeType, items }],
-        },
+    this.setState({
+      productCart: {
+        ...this.state.productCart,
+        cartAttributes: [
+          ...rest,
+          { attributeId, attributeType, attributeName, selectedItem },
+        ],
       },
-      () => {
-        this.setState({
-          isFormFilled:
-            attributesLength === this.state.productCart.cartAttributes.length,
-        });
-      }
-    );
+    });
   };
 
-  handleAddingToCard = ({ name, brand, id, gallery, prices }) => {
-    this.setState(
-      {
-        productCart: {
-          ...this.state.productCart,
-          name: name,
-          brand: brand,
-          id: id,
-          image: gallery[0],
-          prices: prices,
-        },
-      },
-      () => {
-        //setGlobalState
-        this.props.setGlobalCart(this.state.productCart);
-      }
+  handleAddingToCard = ({
+    name,
+    brand,
+    id,
+    gallery,
+    prices,
+    attributes,
+    inStock,
+  }) => {
+    //validations
+
+    //check if the product is not already in the cart
+    const isAlreadyInCart = this.props.globalCart.find(
+      (product) => product.id === id
     );
+
+    //check if user selected the attributes
+    if (
+      attributes.length !== this.state.productCart.cartAttributes.length &&
+      attributes.length > 0
+    ) {
+      alert("Please Select The Preferred item Attributes For Your Product");
+    } else if (isAlreadyInCart !== undefined) {
+      alert("This Product Is Already In The Cart");
+    } else if (!inStock) {
+      alert("Unfortunately, This Product Is NOT in Stock");
+    } else {
+      this.setState(
+        {
+          productCart: {
+            ...this.state.productCart,
+            name: name,
+            brand: brand,
+            id: id,
+            image: gallery[0],
+            prices: prices,
+          },
+        },
+        () => {
+          this.props.setToGlobalCart(this.state.productCart);
+        }
+      );
+    }
   };
 
   render() {
@@ -89,8 +102,16 @@ class ProductPage extends Component {
       <Query query={getProduct} variables={{ id: productId }}>
         {({ loading, data }) => {
           if (loading) return "loading..";
-          const { name, gallery, brand, attributes, description, id, prices } =
-            data.product;
+          const {
+            name,
+            gallery,
+            brand,
+            attributes,
+            description,
+            id,
+            prices,
+            inStock,
+          } = data.product;
           return (
             <div className={styles.pageContainer}>
               <div className={styles.galleryContainer}>
@@ -143,17 +164,10 @@ class ProductPage extends Component {
                                       value={item.value}
                                       onChange={() =>
                                         this.handleCartChange({
-                                          items: [
-                                            { ...item, selected: true },
-                                            {
-                                              ...(attribute.items[index + 1] ||
-                                                attribute.items[index - 1]),
-                                              selected: false,
-                                            },
-                                          ],
+                                          selectedItem: item,
                                           attributeId: attribute.id,
                                           attributeType: attribute.type,
-                                          attributesLength: attributes.length,
+                                          attributeName: attribute.name,
                                         })
                                       }
                                     />
@@ -162,9 +176,9 @@ class ProductPage extends Component {
                                       htmlFor={`${attribute.id}${item.id}`}
                                     >
                                       {attribute.type === "swatch" ? (
-                                        <SwatchAttribute
+                                        <Circle
                                           color={item.value}
-                                          size="large"
+                                          size="medium"
                                         />
                                       ) : (
                                         <Button
@@ -211,9 +225,10 @@ class ProductPage extends Component {
                       id,
                       gallery,
                       prices,
+                      attributes,
+                      inStock,
                     });
                   }}
-                  isDisabled={!this.state.isFormFilled}
                   buttonType="submit"
                   variant="secondary"
                   isIcon={false}
