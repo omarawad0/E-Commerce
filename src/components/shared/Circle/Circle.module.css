@@ -1,0 +1,19 @@
+.circle {
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid #1d1f22;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.swatchMini {
+  height: 2rem;
+  width: 2rem;
+}
+
+.swatchMedium {
+  height: 3.5rem;
+  width: 3.5rem;
+}

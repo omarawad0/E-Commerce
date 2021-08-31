@@ -12,9 +12,9 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Query query={LOAD_CATEGORIES}>
-          {({ loading, data }) => {
+          {({ loading, data, error }) => {
             if (loading) return "loading..";
-            console.log(data);
+            if (error) return <h1>Error has been occured</h1>;
             return <App categories={data.categories} />;
           }}
         </Query>
