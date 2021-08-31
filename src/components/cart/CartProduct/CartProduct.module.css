@@ -1,0 +1,87 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0rem;
+}
+
+.brandCartPage {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 0rem;
+}
+
+.brandCartMini {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-top: 0rem;
+}
+
+.nameCartPage {
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 1.6rem 0rem 1.6rem 0rem;
+}
+
+.nameCartMini {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.priceCartPage {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 1.6rem 0rem;
+}
+
+.priceCartMini {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 1.6rem 0rem;
+}
+
+.attributeNameCartPage {
+  font-family: "Roboto Condensed";
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.attributeNameMini {
+  font-family: "Roboto Condensed";
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 5px 0px;
+  text-transform: uppercase;
+}
+
+.productCount {
+  display: flex;
+}
+
+.AddOrRemoveQuantity {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.AddOrRemoveQuantity p {
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.productImage {
+  height: 100%;
+  object-fit: contain;
+  padding-left: 1.2rem;
+}
+
+.productImage.ImageCartPage {
+  width: 14.1rem;
+}
+
+.productImage.ImageCartMini {
+  width: 10.5rem;
+}
