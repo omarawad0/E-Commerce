@@ -1,0 +1,61 @@
+.dropDownContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.layer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 8rem;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1d1f22;
+  opacity: 0.2;
+  z-index: 10;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.dropDownMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5rem;
+  right: 0rem;
+  min-width: 30rem;
+  padding: 0rem 1.6rem 1.6rem 1.6rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
+  z-index: 15;
+}
+
+.cartOverlayHeader p {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.cartOverlayHeader p span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cartOverlayTotalPrice {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartOverlayTotalPrice p:first-child {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.cartOverlayButtons {
+  display: flex;
+  justify-content: space-between;
+}

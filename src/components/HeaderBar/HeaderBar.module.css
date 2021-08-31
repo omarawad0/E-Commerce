@@ -1,11 +1,12 @@
-header {
+.headerBarWrapper {
   display: flex;
-  justify-content: space-between;
   min-height: 8rem;
   align-items: center;
+  max-width: 120.5rem;
+  margin: 0 auto;
 }
 
-header .navCategories {
+.headerBarWrapper .navCategories {
   font-size: 1.6rem;
 }
 
