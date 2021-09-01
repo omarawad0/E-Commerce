@@ -29,10 +29,12 @@
   top: 5rem;
   right: 0rem;
   min-width: 30rem;
+  max-height: 540px;
   padding: 0rem 1.6rem 1.6rem 1.6rem;
   background-color: #ffffff;
   box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
   z-index: 15;
+  overflow: auto;
 }
 
 .cartOverlayHeader p {
