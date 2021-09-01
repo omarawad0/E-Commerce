@@ -8,7 +8,7 @@ import classnames from "classnames";
 class CartProduct extends Component {
   render() {
     const {
-      product: { brand, name, prices, cartAttributes, id, image, quantity },
+      product: { brand, name, prices, attributes, id, image, quantity },
       currency: { currentCurrency, symbolCurrency },
       size,
       quantityBtnSize,
@@ -56,8 +56,8 @@ class CartProduct extends Component {
               </p>
             ))}
           <div className={styles.productAttributes}>
-            {cartAttributes[0]
-              ? cartAttributes.map((attribute, index) => {
+            {attributes[0]
+              ? attributes.map((attribute, index) => {
                   return (
                     <div
                       key={`${attribute.attributeId}${index}`}

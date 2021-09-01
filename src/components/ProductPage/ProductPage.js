@@ -18,7 +18,7 @@ class ProductPage extends Component {
         image: "",
         prices: [],
         quantity: 1,
-        cartAttributes: [],
+        attributes: [],
       },
     };
   }
@@ -29,7 +29,7 @@ class ProductPage extends Component {
     attributeType,
     attributeName,
   }) => {
-    const rest = this.state.productCart.cartAttributes.filter((attribute) => {
+    const rest = this.state.productCart.attributes.filter((attribute) => {
       return (
         attribute.attributeId != attributeId && attribute.attributeId != ""
       );
@@ -38,7 +38,7 @@ class ProductPage extends Component {
     this.setState({
       productCart: {
         ...this.state.productCart,
-        cartAttributes: [
+        attributes: [
           ...rest,
           { attributeId, attributeType, attributeName, selectedItem },
         ],
@@ -64,7 +64,7 @@ class ProductPage extends Component {
 
     //check if user selected the attributes
     if (
-      attributes.length !== this.state.productCart.cartAttributes.length &&
+      attributes.length !== this.state.productCart.attributes.length &&
       attributes.length > 0
     ) {
       alert("Please Select The Preferred item Attributes For Your Product");
