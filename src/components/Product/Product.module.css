@@ -41,3 +41,14 @@
   font-size: 1.8rem;
   font-weight: 500;
 }
+
+.productCard {
+  position: absolute;
+  bottom: 80px;
+  right: 31px;
+  display: none;
+}
+
+.productWrapper:hover .productCard {
+  display: block;
+}

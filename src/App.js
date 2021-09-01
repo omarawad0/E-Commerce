@@ -107,6 +107,8 @@ class App extends Component {
                       categoryName={category.name}
                       products={category.products}
                       currency={this.state.currency}
+                      setCart={this.setCart}
+                      cart={this.state.cart}
                     />
                   )}
                 />
