@@ -52,17 +52,17 @@ class Product extends Component {
         <div className={styles.productCard}>
           {attributes[0] ? (
             <Link to={`/${category}/${id}`}>
-              <img src={ProductCard} alt="product cart image" />
+              <img src={ProductCard} alt="product cart" />
             </Link>
           ) : !inStock ? (
             <Link to={`/${category}/${id}`}>
-              <img src={ProductCard} alt="product cart image" />
+              <img src={ProductCard} alt="product cart" />
             </Link>
           ) : (
             <img
               onClick={this.addProductToCartHandler}
               src={ProductCard}
-              alt="product cart image"
+              alt="product cart"
             />
           )}
         </div>

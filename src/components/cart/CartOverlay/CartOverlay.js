@@ -7,10 +7,6 @@ import Button from "../../shared/Button/Button";
 import Circle from "../../shared/Circle/Circle";
 
 class CartOverlay extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidUpdate() {
     this.props.detect.showMenu
       ? (document.body.style.overflow = "hidden")

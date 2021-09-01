@@ -6,10 +6,6 @@ import { getCurrencies } from "../../GraphQL/queries";
 import { Query } from "@apollo/client/react/components";
 
 class CurrencyDropDown extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       currency: { symbolCurrency },

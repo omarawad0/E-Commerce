@@ -23,7 +23,7 @@ class ProductPage extends Component {
     };
   }
 
-  handleCartChange = ({
+  handleAttributesItems = ({
     selectedItem,
     attributeId,
     attributeType,
@@ -31,7 +31,7 @@ class ProductPage extends Component {
   }) => {
     const rest = this.state.productCart.attributes.filter((attribute) => {
       return (
-        attribute.attributeId != attributeId && attribute.attributeId != ""
+        attribute.attributeId !== attributeId && attribute.attributeId !== ""
       );
     });
 
@@ -122,6 +122,7 @@ class ProductPage extends Component {
                         src={image}
                         key={image}
                         className={styles.smallImage}
+                        alt=""
                         onClick={() =>
                           this.setState({ selectedImagePreview: image })
                         }
@@ -163,7 +164,7 @@ class ProductPage extends Component {
                                       id={`${attribute.id}${item.id}`}
                                       value={item.value}
                                       onChange={() =>
-                                        this.handleCartChange({
+                                        this.handleAttributesItems({
                                           selectedItem: item,
                                           attributeId: attribute.id,
                                           attributeType: attribute.type,

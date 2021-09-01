@@ -7,10 +7,6 @@ import { NavLink } from "react-router-dom";
 import CartOverlay from "../cart/CartOverlay/CartOverlay";
 
 class HeaderBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       onCurrencyClick,
