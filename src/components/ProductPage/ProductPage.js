@@ -100,8 +100,9 @@ class ProductPage extends Component {
     } = this.props;
     return (
       <Query query={getProduct} variables={{ id: productId }}>
-        {({ loading, data }) => {
+        {({ loading, data, error }) => {
           if (loading) return "loading..";
+          if (error || !data.product) return <h1>Product does not exist!</h1>;
           const {
             name,
             gallery,

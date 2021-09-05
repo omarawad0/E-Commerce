@@ -17,7 +17,7 @@ class App extends Component {
       },
       cart: [],
 
-      categories: this.props.categories,
+      categoriesName: this.props.categoriesName,
     };
   }
   setCurrency = (clickedCurrency) => {
@@ -85,7 +85,7 @@ class App extends Component {
       <div>
         <header>
           <HeaderBar
-            categories={this.state.categories}
+            categories={this.state.categoriesName}
             products={this.state.cart}
             currency={this.state.currency}
             handleAddProductQuantity={this.handleAddProductQuantity}
@@ -96,7 +96,7 @@ class App extends Component {
         </header>
         <main>
           <Switch>
-            {this.state.categories.map((category) => {
+            {this.state.categoriesName.map((category) => {
               return (
                 <Route
                   key={category.name}
@@ -105,7 +105,6 @@ class App extends Component {
                   render={() => (
                     <ProductList
                       categoryName={category.name}
-                      products={category.products}
                       currency={this.state.currency}
                       setCart={this.setCart}
                       cart={this.state.cart}
@@ -114,7 +113,20 @@ class App extends Component {
                 />
               );
             })}
-            {this.state.categories.map((category) => {
+            <Route
+              path={`/all`}
+              exact
+              render={() => (
+                <ProductList
+                  categoryName=""
+                  currency={this.state.currency}
+                  setCart={this.setCart}
+                  cart={this.state.cart}
+                />
+              )}
+            />
+            );
+            {this.state.categoriesName.map((category) => {
               return (
                 <Route
                   key={category.name}
@@ -143,7 +155,7 @@ class App extends Component {
               )}
             />
             <Route path="/" exact>
-              <Redirect to="/tech" />
+              <Redirect to="/all" />
             </Route>
           </Switch>
         </main>

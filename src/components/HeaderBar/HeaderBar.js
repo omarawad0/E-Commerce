@@ -20,16 +20,15 @@ class HeaderBar extends React.Component {
     return (
       <div className={styles.headerBarWrapper}>
         <div className={styles.navCategories}>
+          <NavLink to="/all" activeClassName={styles.navLinks}>
+            ALL
+          </NavLink>
           {categories.map((category) => {
             return (
               <NavLink
                 key={category.name}
                 to={`/${category.name}`}
-                activeStyle={{
-                  fontWeight: "600",
-                  color: "#5ece7b",
-                  borderBottom: "2px solid #5ece7b",
-                }}
+                activeClassName={styles.navLinks}
               >
                 {`${category.name}`.toUpperCase()}
               </NavLink>
