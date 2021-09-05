@@ -5,7 +5,8 @@ import CartProduct from "../CartProduct/CartProduct";
 import { Link } from "react-router-dom";
 import Button from "../../shared/Button/Button";
 import Circle from "../../shared/Circle/Circle";
-
+import { getTotalProductsPriceAmount } from "../../shared/utils/getTotalProductsPriceAmount";
+import { getTotalProductsQuantity } from "./utils/getTotalProductsQuantity";
 class CartOverlay extends Component {
   componentDidUpdate() {
     this.props.detect.showMenu
@@ -20,7 +21,6 @@ class CartOverlay extends Component {
       products,
       handleRemoveProductQuantity,
       handleAddProductQuantity,
-      getTotalProductsPriceAmount,
     } = this.props;
 
     return (
@@ -35,22 +35,21 @@ class CartOverlay extends Component {
           ref={triggerRef}
         >
           <img src={EmptyCart} alt="empty cart logo" />
+          <div className={styles.totalQuantityBadge}>
+            <Circle color="#1D1F22" size="mini">
+              {getTotalProductsQuantity(products)}
+            </Circle>
+          </div>
         </div>
+
         {showMenu && (
           <>
-            <div
-              style={{ position: "absolute", bottom: "1rem", right: "-1.6rem" }}
-            >
-              <Circle color="#1D1F22" size="mini">
-                {products.length}
-              </Circle>
-            </div>
-
             <div className={styles.layer}></div>
             <div role="menu" className={styles.dropDownMenu} ref={nodeRef}>
               <div className={styles.cartOverlayHeader}>
                 <p>
-                  My Bag, <span>{products.length} items</span>
+                  My Bag,{" "}
+                  <span>{getTotalProductsQuantity(products)} items</span>
                 </p>
               </div>
               <div className={styles.cartOverlayProducts}>
@@ -78,7 +77,10 @@ class CartOverlay extends Component {
                 <p>Total</p>
                 <p style={{ fontSize: "1.6rem", fontWeight: "700" }}>{`${
                   currency.symbolCurrency
-                }${getTotalProductsPriceAmount()}`}</p>
+                }${getTotalProductsPriceAmount(
+                  products,
+                  currency.currentCurrency
+                )}`}</p>
               </div>
 
               <div className={styles.cartOverlayButtons}>

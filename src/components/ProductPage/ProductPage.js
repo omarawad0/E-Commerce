@@ -5,6 +5,8 @@ import Button from "../shared/Button/Button";
 
 import styles from "./ProductPage.module.css";
 import Circle from "../shared/Circle/Circle";
+import { getPriceWithCurrentCurrency } from "../shared/utils/getPriceWithCurrentCurrency";
+
 class ProductPage extends Component {
   constructor(props) {
     super(props);
@@ -208,16 +210,13 @@ class ProductPage extends Component {
                   : null}
                 <div className={styles.price}>
                   <p className={styles.priceHeader}>PRICES:</p>
-                  {prices
-                    .filter((price) => price.currency === currentCurrency)
-                    .map((currentPrice) => (
-                      <p
-                        key={currentPrice.currency}
-                        className={styles.priceAmount}
-                      >
-                        {`${symbolCurrency}${currentPrice.amount}`}
-                      </p>
-                    ))}
+
+                  <p className={styles.priceAmount}>
+                    {`${symbolCurrency}${getPriceWithCurrentCurrency(
+                      prices,
+                      currentCurrency
+                    )}`}
+                  </p>
                 </div>
                 <Button
                   onClick={() => {

@@ -65,21 +65,6 @@ class App extends Component {
     });
   };
 
-  getTotalProductsPriceAmount = () => {
-    const eachProductTotal = this.state.cart.map((product) => {
-      return (
-        product.prices.filter(
-          (price) => price.currency === this.state.currency.currentCurrency
-        )[0].amount * product.quantity
-      );
-    });
-
-    const allProductsTotal = eachProductTotal.reduce((acc, productTotal) => {
-      return acc + productTotal;
-    }, 0);
-    return allProductsTotal;
-  };
-
   render() {
     return (
       <div>
@@ -91,7 +76,6 @@ class App extends Component {
             handleAddProductQuantity={this.handleAddProductQuantity}
             handleRemoveProductQuantity={this.handleRemoveProductQuantity}
             onCurrencyClick={this.setCurrency}
-            getTotalProductsPriceAmount={this.getTotalProductsPriceAmount}
           />
         </header>
         <main>

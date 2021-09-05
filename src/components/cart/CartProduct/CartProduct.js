@@ -5,6 +5,7 @@ import styles from "./CartProduct.module.css";
 import Plus from "../../../Icons/Plus.svg";
 import Minus from "../../../Icons/Minus.svg";
 import classnames from "classnames";
+import { getPriceWithCurrentCurrency } from "../../shared/utils/getPriceWithCurrentCurrency";
 class CartProduct extends Component {
   render() {
     const {
@@ -47,14 +48,12 @@ class CartProduct extends Component {
             <h1 className={productBrandClasses}>{brand}</h1>
             <h2 className={productNameClasses}>{name}</h2>
           </div>
-
-          {prices
-            .filter((price) => price.currency === currentCurrency)
-            .map((currentPrice) => (
-              <p key={currentPrice.currency} className={productPriceClasses}>
-                {`${symbolCurrency}${currentPrice.amount * quantity}`}
-              </p>
-            ))}
+          <p className={productPriceClasses}>
+            {`${symbolCurrency}${getPriceWithCurrentCurrency(
+              prices,
+              currentCurrency
+            )}`}
+          </p>
           <div className={styles.productAttributes}>
             {attributes[0]
               ? attributes.map((attribute, index) => {

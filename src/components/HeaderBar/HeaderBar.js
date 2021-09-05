@@ -15,7 +15,6 @@ class HeaderBar extends React.Component {
       handleRemoveProductQuantity,
       handleAddProductQuantity,
       categories,
-      getTotalProductsPriceAmount,
     } = this.props;
     return (
       <div className={styles.headerBarWrapper}>
@@ -57,7 +56,6 @@ class HeaderBar extends React.Component {
                   currency={currency}
                   handleAddProductQuantity={handleAddProductQuantity}
                   handleRemoveProductQuantity={handleRemoveProductQuantity}
-                  getTotalProductsPriceAmount={getTotalProductsPriceAmount}
                 />
               )}
             />

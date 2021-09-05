@@ -5,6 +5,8 @@ import ProductCard from "../../Icons/ProductCard.svg";
 import { Link } from "react-router-dom";
 import { Query } from "@apollo/client/react/components";
 import { getProduct } from "../../GraphQL/queries";
+import { getPriceWithCurrentCurrency } from "../shared/utils/getPriceWithCurrentCurrency";
+
 class Product extends Component {
   addProductToCartHandler = (product) => {
     const isAlreadyInCart = this.props.cart.find(
@@ -49,16 +51,15 @@ class Product extends Component {
                     alt={name}
                   />
                   <p className={styles.name}>{name}</p>
-                  {prices
-                    .filter(
-                      (price) =>
-                        price.currency === this.props.currency.currentCurrency
-                    )
-                    .map((currentPrice) => (
-                      <p key={currentPrice.currency} className={styles.price}>
-                        {`${this.props.currency.symbolCurrency}${currentPrice.amount}`}
-                      </p>
-                    ))}
+
+                  <p className={styles.price}>
+                    {`${
+                      this.props.currency.symbolCurrency
+                    }${getPriceWithCurrentCurrency(
+                      prices,
+                      this.props.currency.currentCurrency
+                    )}`}
+                  </p>
                 </div>
               </Link>
               <div className={styles.productCard}>
