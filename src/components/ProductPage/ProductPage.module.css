@@ -23,6 +23,25 @@
   box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
 }
 
+.notInStockBox {
+  opacity: 50%;
+}
+.notInStock {
+  font-size: 2.4rem;
+  color: #8d8f9a;
+  z-index: 1;
+  width: 18rem;
+  position: absolute;
+  top: 16.5rem;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.largeImage {
+  position: relative;
+}
 .largeImage img {
   width: 61rem;
   height: 51rem;

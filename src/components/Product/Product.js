@@ -25,12 +25,12 @@ class Product extends Component {
       this.props.product;
     return (
       <div className={styles.productWrapper}>
-        {!inStock && (
-          <div className={styles.notInStock}>
-            <span>OUT OF STOCK</span>
-          </div>
-        )}
         <Link to={`/${category}/${id}`}>
+          {!inStock && (
+            <div className={styles.notInStock}>
+              <span>OUT OF STOCK</span>
+            </div>
+          )}
           <div
             className={classnames(styles.product, {
               [styles.notInStockBox]: !inStock,

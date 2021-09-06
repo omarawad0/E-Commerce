@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Query } from "@apollo/client/react/components";
 import { getProduct } from "../../GraphQL/queries";
 import Button from "../shared/Button/Button";
-
+import classnames from "classnames";
 import styles from "./ProductPage.module.css";
 import Circle from "../shared/Circle/Circle";
 import { getPriceWithCurrentCurrency } from "../shared/utils/getPriceWithCurrentCurrency";
@@ -145,12 +145,20 @@ class ProductPage extends Component {
                   })}
                 </div>
                 <div className={styles.largeImage}>
+                  {!inStock && (
+                    <div className={styles.notInStock}>
+                      <span>OUT OF STOCK</span>
+                    </div>
+                  )}
                   <img
                     src={
                       this.state.selectedImagePreview === ""
                         ? gallery[0]
                         : this.state.selectedImagePreview
                     }
+                    className={classnames({
+                      [styles.notInStockBox]: !inStock,
+                    })}
                     alt={name}
                   />
                 </div>
