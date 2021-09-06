@@ -51,7 +51,6 @@ class ProductPage extends Component {
   handleAddingToCard = ({
     name,
     brand,
-    id,
     gallery,
     prices,
     attributes,
@@ -59,10 +58,23 @@ class ProductPage extends Component {
   }) => {
     //validations
 
+    //make each product id unique and personalized by using attributes preferences
+    const securedProductId = [...this.state.productCart.attributes]
+      .sort((a, b) =>
+        a.attributeId > b.attributeId
+          ? 1
+          : b.attributeId > a.attributeId
+          ? -1
+          : 0
+      )
+      .reduce(
+        (acc, curr) => acc + curr.selectedItem.id,
+        `${this.props.match.params.productId}-`
+      );
     //check if the product is not already in the cart
-    const isAlreadyInCart = this.props.globalCart.find(
-      (product) => product.id === id
-    );
+    const ProductIsAlreadyInCart = this.props.globalCart.find((product) => {
+      return product.id === securedProductId;
+    });
 
     //check if user selected the attributes
     if (
@@ -70,7 +82,7 @@ class ProductPage extends Component {
       attributes.length > 0
     ) {
       alert("Please Select The Preferred item Attributes For Your Product");
-    } else if (isAlreadyInCart !== undefined) {
+    } else if (ProductIsAlreadyInCart !== undefined) {
       alert("This Product Is Already In The Cart");
     } else if (!inStock) {
       alert("Unfortunately, This Product Is NOT in Stock");
@@ -81,9 +93,9 @@ class ProductPage extends Component {
             ...this.state.productCart,
             name: name,
             brand: brand,
-            id: id,
             image: gallery[0],
             prices: prices,
+            id: securedProductId,
           },
         },
         () => {
@@ -111,7 +123,6 @@ class ProductPage extends Component {
             brand,
             attributes,
             description,
-            id,
             prices,
             inStock,
           } = data.product;
@@ -223,7 +234,6 @@ class ProductPage extends Component {
                     this.handleAddingToCard({
                       name,
                       brand,
-                      id,
                       gallery,
                       prices,
                       attributes,

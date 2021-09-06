@@ -24,7 +24,7 @@ class ProductList extends React.Component {
                 return (
                   <Product
                     key={product.id}
-                    productId={product.id}
+                    product={product}
                     currency={this.props.currency}
                     setCart={this.props.setCart}
                     cart={this.props.cart}
