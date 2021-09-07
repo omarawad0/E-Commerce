@@ -69,12 +69,13 @@ class ProductPage extends Component {
       )
       .reduce(
         (acc, curr) => acc + curr.selectedItem.id,
-        `${this.props.match.params.productId}-`
+        `${this.props.match.params.productId}`
       );
     //check if the product is not already in the cart
     const ProductIsAlreadyInCart = this.props.globalCart.find((product) => {
       return product.id === securedProductId;
     });
+    console.log(securedProductId);
 
     //check if user selected the attributes
     if (
