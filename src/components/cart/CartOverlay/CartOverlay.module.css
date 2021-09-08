@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.dropDownTriggerer {
+  cursor: pointer;
+}
+
 .layer {
   display: flex;
   justify-content: center;
@@ -52,7 +56,7 @@
   justify-content: space-between;
 }
 
-.cartOverlayTotalPrice p:first-child {
+.cartOverlayTotalPrice p {
   font-size: 1.6rem;
   font-weight: 600;
 }

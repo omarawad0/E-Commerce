@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.dropDownTriggerer {
+  cursor: pointer;
+}
+
 .dropDownTriggerer span {
   font-size: 1.6rem;
 }

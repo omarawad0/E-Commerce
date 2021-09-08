@@ -20,7 +20,6 @@ class CurrencyDropDown extends Component {
           aria-pressed={false}
           tabIndex={0}
           aria-hidden
-          style={{ cursor: "pointer" }}
           className={styles.dropDownTriggerer}
           ref={triggerRef}
         >

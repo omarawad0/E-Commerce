@@ -30,7 +30,6 @@ class CartOverlay extends Component {
           aria-pressed={false}
           tabIndex={0}
           aria-hidden
-          style={{ cursor: "pointer" }}
           className={styles.dropDownTriggerer}
           ref={triggerRef}
         >
@@ -75,9 +74,7 @@ class CartOverlay extends Component {
               </div>
               <div className={styles.cartOverlayTotalPrice}>
                 <p>Total</p>
-                <p style={{ fontSize: "1.6rem", fontWeight: "700" }}>{`${
-                  currency.symbolCurrency
-                }${getTotalProductsPriceAmount(
+                <p>{`${currency.symbolCurrency}${getTotalProductsPriceAmount(
                   products,
                   currency.currentCurrency
                 )}`}</p>

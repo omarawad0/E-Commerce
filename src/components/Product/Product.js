@@ -36,13 +36,7 @@ class Product extends Component {
               [styles.notInStockBox]: !inStock,
             })}
           >
-            <img
-              width="100%"
-              height="330px"
-              style={{ objectFit: "cover" }}
-              src={gallery[0]}
-              alt={name}
-            />
+            <img className={styles.productImage} src={gallery[0]} alt={name} />
             <p className={styles.name}>{name}</p>
 
             <p className={styles.price}>
