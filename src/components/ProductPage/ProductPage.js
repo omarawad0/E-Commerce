@@ -6,7 +6,7 @@ import classnames from "classnames";
 import styles from "./ProductPage.module.css";
 import Circle from "../shared/Circle/Circle";
 import { getPriceWithCurrentCurrency } from "../shared/utils/getPriceWithCurrentCurrency";
-
+import { sanitize } from "dompurify";
 class ProductPage extends Component {
   constructor(props) {
     super(props);
@@ -258,7 +258,7 @@ class ProductPage extends Component {
                 </Button>
                 <div
                   className={styles.description}
-                  dangerouslySetInnerHTML={{ __html: description }}
+                  dangerouslySetInnerHTML={{ __html: sanitize(description) }}
                 />
               </div>
             </div>
