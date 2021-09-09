@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class DetectClickOutside extends Component {
+class DetectClickOutside extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

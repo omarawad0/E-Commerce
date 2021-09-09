@@ -1,14 +1,51 @@
-import React, { Component } from "react";
+import React from "react";
 import Button from "../../shared/Button/Button";
 import Circle from "../../shared/Circle/Circle";
 import styles from "./CartProduct.module.css";
 import classnames from "classnames";
 import { getPriceWithCurrentCurrency } from "../../shared/utils/getPriceWithCurrentCurrency";
 import CartProductActions from "./CartProductActions/CartProductActions";
-class CartProduct extends Component {
+class CartProduct extends React.PureComponent {
+  renderAttributes = (attributes, attributeNameClasses) => {
+    return attributes[0]
+      ? attributes.map((attribute, index) => {
+          return (
+            <div
+              key={`${attribute.attributeId}${index}`}
+              className={styles.attribute}
+            >
+              <p
+                className={attributeNameClasses}
+              >{`${attribute.attributeName}:`}</p>
+              <div className={styles.item}>
+                {attribute.attributeType === "swatch" ? (
+                  <Circle
+                    color={attribute.selectedItem.value}
+                    size={this.props.size}
+                  />
+                ) : (
+                  <Button
+                    buttonType="button"
+                    variant="primary"
+                    isIcon={false}
+                    size={this.props.size}
+                    isSelected={true}
+                    stylesProps={{
+                      pointerEvents: "none",
+                    }}
+                  >
+                    {attribute.selectedItem.value}
+                  </Button>
+                )}
+              </div>
+            </div>
+          );
+        })
+      : null;
+  };
   render() {
     const {
-      product: { brand, name, prices, attributes, id, gallery, quantity },
+      product: { brand, name, prices, id },
       currency: { currentCurrency, symbolCurrency },
       size,
     } = this.props;
@@ -46,51 +83,20 @@ class CartProduct extends Component {
             )}`}
           </p>
           <div className={styles.productAttributes}>
-            {attributes[0]
-              ? attributes.map((attribute, index) => {
-                  return (
-                    <div
-                      key={`${attribute.attributeId}${index}`}
-                      className={styles.attribute}
-                    >
-                      <p
-                        className={attributeNameClasses}
-                      >{`${attribute.attributeName}:`}</p>
-                      <div className={styles.item}>
-                        {attribute.attributeType === "swatch" ? (
-                          <Circle
-                            color={attribute.selectedItem.value}
-                            size={size}
-                          />
-                        ) : (
-                          <Button
-                            buttonType="button"
-                            variant="primary"
-                            isIcon={false}
-                            size={size}
-                            isSelected={true}
-                            stylesProps={{
-                              pointerEvents: "none",
-                            }}
-                          >
-                            {attribute.selectedItem.value}
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })
-              : null}
+            {this.renderAttributes(
+              this.props.product.attributes,
+              attributeNameClasses
+            )}
           </div>
         </div>
         <CartProductActions
           handleRemoveProductQuantity={this.props.handleRemoveProductQuantity}
           handleAddProductQuantity={this.props.handleAddProductQuantity}
           quantityBtnSize={this.props.quantityBtnSize}
-          name={name}
-          size={size}
-          quantity={quantity}
-          gallery={gallery}
+          name={this.props.product.name}
+          size={this.props.size}
+          quantity={this.props.product.quantity}
+          gallery={this.props.product.gallery}
           id={id}
         />
       </div>

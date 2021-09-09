@@ -1,19 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import classnames from "classnames";
 import styles from "./Button.module.css";
-class Button extends Component {
+class Button extends React.PureComponent {
+  renderButtonContent = () => {
+    const { size, isIcon, children } = this.props;
+    const iconClasses = classnames({
+      [styles.iconMini]: size === "mini",
+      [styles.iconSmall]: size === "small",
+    });
+    return isIcon ? (
+      <img src={children} alt="" className={iconClasses} />
+    ) : (
+      children
+    );
+  };
+
   render() {
-    const {
-      isIcon,
-      variant,
-      size,
-      children,
-      id,
-      stylesProps,
-      buttonType,
-      onClick,
-      isSelected,
-    } = this.props;
+    const { variant, size, id, stylesProps, buttonType, onClick, isSelected } =
+      this.props;
     const btnClasses = classnames(styles.btn, {
       [styles.btnPrimary]: variant === "primary",
       [styles.btnSecondary]: variant === "secondary",
@@ -26,10 +30,6 @@ class Button extends Component {
       [styles.mediumBtnSelected]: size === "medium" && isSelected,
     });
 
-    const iconClasses = classnames({
-      [styles.iconMini]: size === "mini",
-      [styles.iconSmall]: size === "small",
-    });
     return (
       <button
         onClick={onClick}
@@ -38,11 +38,7 @@ class Button extends Component {
         id={id}
         style={stylesProps}
       >
-        {isIcon ? (
-          <img src={children} alt="" className={iconClasses} />
-        ) : (
-          children
-        )}
+        {this.renderButtonContent()}
       </button>
     );
   }

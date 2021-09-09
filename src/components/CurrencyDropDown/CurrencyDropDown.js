@@ -1,18 +1,61 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./CurrencyDropDown.module.css";
 import ArrowDown from "../../Icons/ArrowDown.svg";
 import ArrowUp from "../../Icons/ArrowUp.svg";
 import { getCurrencies } from "../../GraphQL/queries";
 import { Query } from "@apollo/client/react/components";
 
-class CurrencyDropDown extends Component {
+class CurrencyDropDown extends React.PureComponent {
+  renderCurrencies = (data) => {
+    const {
+      onCurrencyClick,
+      detect: { setShowMenu },
+    } = this.props;
+    return data.currencies.map((currency) => {
+      return (
+        <button
+          className={styles.dropDownMenuItem}
+          role="menuitem"
+          type="button"
+          key={currency}
+          id={currency}
+          onClick={(e) => {
+            onCurrencyClick(e.currentTarget.id);
+            setShowMenu();
+          }}
+        >
+          {currency}
+        </button>
+      );
+    });
+  };
+
+  renderMenu = () => {
+    return (
+      <div
+        role="menu"
+        className={styles.dropDownMenu}
+        ref={this.props.detect.nodeRef}
+      >
+        <Query query={getCurrencies}>
+          {({ loading, data }) => {
+            if (loading) return "loading..";
+            return this.renderCurrencies(data);
+          }}
+        </Query>
+      </div>
+    );
+  };
+
+  setArrowIcon = () => {
+    return this.props.detect.showMenu ? ArrowUp : ArrowDown;
+  };
+
   render() {
     const {
       currency: { symbolCurrency },
-      onCurrencyClick,
-      detect: { nodeRef, triggerRef, showMenu, setShowMenu },
+      detect: { triggerRef, showMenu },
     } = this.props;
-    const arrowIcon = showMenu ? ArrowUp : ArrowDown;
     return (
       <div className={styles.dropDownContainer}>
         <div
@@ -24,34 +67,9 @@ class CurrencyDropDown extends Component {
           ref={triggerRef}
         >
           <span>{symbolCurrency}</span>{" "}
-          <img src={arrowIcon} alt="DropDown Arrow" />
+          <img src={this.setArrowIcon()} alt="DropDown Arrow" />
         </div>
-        {showMenu && (
-          <div role="menu" className={styles.dropDownMenu} ref={nodeRef}>
-            <Query query={getCurrencies}>
-              {({ loading, data }) => {
-                if (loading) return "loading..";
-                return data.currencies.map((currency) => {
-                  return (
-                    <button
-                      className={styles.dropDownMenuItem}
-                      role="menuitem"
-                      type="button"
-                      key={currency}
-                      id={currency}
-                      onClick={(e) => {
-                        onCurrencyClick(e.currentTarget.id);
-                        setShowMenu();
-                      }}
-                    >
-                      {currency}
-                    </button>
-                  );
-                });
-              }}
-            </Query>
-          </div>
-        )}
+        {showMenu && this.renderMenu()}
       </div>
     );
   }
