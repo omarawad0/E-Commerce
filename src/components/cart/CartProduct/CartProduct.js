@@ -2,25 +2,16 @@ import React, { Component } from "react";
 import Button from "../../shared/Button/Button";
 import Circle from "../../shared/Circle/Circle";
 import styles from "./CartProduct.module.css";
-import Plus from "../../../Icons/Plus.svg";
-import Minus from "../../../Icons/Minus.svg";
 import classnames from "classnames";
 import { getPriceWithCurrentCurrency } from "../../shared/utils/getPriceWithCurrentCurrency";
+import CartProductActions from "./CartProductActions/CartProductActions";
 class CartProduct extends Component {
   render() {
     const {
-      product: { brand, name, prices, attributes, id, image, quantity },
+      product: { brand, name, prices, attributes, id, gallery, quantity },
       currency: { currentCurrency, symbolCurrency },
       size,
-      quantityBtnSize,
-      handleRemoveProductQuantity,
-      handleAddProductQuantity,
     } = this.props;
-
-    const productImageClasses = classnames(styles.productImage, {
-      [styles.ImageCartPage]: size === "medium",
-      [styles.ImageCartMini]: size === "mini",
-    });
 
     const productBrandClasses = classnames({
       [styles.brandCartPage]: size === "medium",
@@ -92,30 +83,16 @@ class CartProduct extends Component {
               : null}
           </div>
         </div>
-        <div className={styles.productCount}>
-          <div className={styles.AddOrRemoveQuantity}>
-            <Button
-              buttonType="button"
-              variant="primary"
-              isIcon
-              size={quantityBtnSize}
-              onClick={() => handleAddProductQuantity(id)}
-            >
-              {Plus}
-            </Button>
-            <p>{quantity}</p>
-            <Button
-              buttonType="button"
-              variant="primary"
-              isIcon
-              size={quantityBtnSize}
-              onClick={() => handleRemoveProductQuantity({ id, quantity })}
-            >
-              {Minus}
-            </Button>
-          </div>
-          <img src={image} alt={name} className={productImageClasses} />
-        </div>
+        <CartProductActions
+          handleRemoveProductQuantity={this.props.handleRemoveProductQuantity}
+          handleAddProductQuantity={this.props.handleAddProductQuantity}
+          quantityBtnSize={this.props.quantityBtnSize}
+          name={name}
+          size={size}
+          quantity={quantity}
+          gallery={gallery}
+          id={id}
+        />
       </div>
     );
   }

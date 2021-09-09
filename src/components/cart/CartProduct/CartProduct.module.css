@@ -54,34 +54,3 @@
   margin: 5px 0px;
   text-transform: uppercase;
 }
-
-.productCount {
-  display: flex;
-}
-
-.AddOrRemoveQuantity {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.AddOrRemoveQuantity p {
-  font-size: 2.4rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.productImage {
-  height: 100%;
-  object-fit: contain;
-  padding-left: 1.2rem;
-}
-
-.productImage.ImageCartPage {
-  width: 14.1rem;
-}
-
-.productImage.ImageCartMini {
-  width: 10.5rem;
-}

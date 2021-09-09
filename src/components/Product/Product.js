@@ -15,7 +15,7 @@ class Product extends Component {
     } else {
       this.props.setCart({
         ...this.props.product,
-        image: this.props.product.gallery[0],
+        gallery: this.props.product.gallery,
         quantity: 1,
       });
     }

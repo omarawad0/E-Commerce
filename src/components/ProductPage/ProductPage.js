@@ -17,7 +17,7 @@ class ProductPage extends Component {
         name: "",
         brand: "",
         id: "",
-        image: "",
+        gallery: "",
         prices: [],
         quantity: 1,
         attributes: [],
@@ -75,7 +75,6 @@ class ProductPage extends Component {
     const ProductIsAlreadyInCart = this.props.globalCart.find((product) => {
       return product.id === securedProductId;
     });
-    console.log(securedProductId);
 
     //check if user selected the attributes
     if (
@@ -94,7 +93,7 @@ class ProductPage extends Component {
             ...this.state.productCart,
             name: name,
             brand: brand,
-            image: gallery[0],
+            gallery: gallery,
             prices: prices,
             id: securedProductId,
           },
