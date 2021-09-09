@@ -17,7 +17,12 @@
   object-fit: cover;
   box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
   margin-bottom: 3.2rem;
+  transition: 0.24s;
   cursor: pointer;
+}
+
+.smallImage:hover {
+  transform: translateY(-10px);
 }
 
 .notInStockBox {
