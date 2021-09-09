@@ -6,7 +6,20 @@ import DetectClickOutside from "../shared/DetectClickOutside/DetectClickOutside"
 import { NavLink } from "react-router-dom";
 import CartOverlay from "../cart/CartOverlay/CartOverlay";
 
-class HeaderBar extends React.Component {
+class HeaderBar extends React.PureComponent {
+  renderCategoriesNames = () => {
+    return this.props.categories.map((category) => {
+      return (
+        <NavLink
+          key={category.name}
+          to={`/${category.name}`}
+          activeClassName={styles.navLinks}
+        >
+          {`${category.name}`.toUpperCase()}
+        </NavLink>
+      );
+    });
+  };
   render() {
     const {
       onCurrencyClick,
@@ -14,7 +27,6 @@ class HeaderBar extends React.Component {
       products,
       handleRemoveProductQuantity,
       handleAddProductQuantity,
-      categories,
     } = this.props;
     return (
       <div className={styles.headerBarWrapper}>
@@ -22,17 +34,7 @@ class HeaderBar extends React.Component {
           <NavLink to="/all" activeClassName={styles.navLinks}>
             ALL
           </NavLink>
-          {categories.map((category) => {
-            return (
-              <NavLink
-                key={category.name}
-                to={`/${category.name}`}
-                activeClassName={styles.navLinks}
-              >
-                {`${category.name}`.toUpperCase()}
-              </NavLink>
-            );
-          })}
+          {this.renderCategoriesNames()}
         </div>
         <div className={styles.logo}>
           <img src={Logo} alt="Arrow with green background" />
