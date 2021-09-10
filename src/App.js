@@ -5,6 +5,7 @@ import { getCurrencySymbol } from "./components/shared/utils/getCurrencySymbol";
 import { Switch, Route, Redirect } from "react-router-dom";
 import ProductPage from "./components/ProductPage/ProductPage";
 import CartPage from "./components/cart/CartPage/CartPage";
+import CategoriesNames from "./components/shared/CategoriesNames/CategoriesNames";
 
 class App extends Component {
   constructor(props) {
@@ -16,8 +17,6 @@ class App extends Component {
         symbolCurrency: "$",
       },
       cart: [],
-
-      categoriesName: this.props.categoriesName,
     };
   }
   setCurrency = (clickedCurrency) => {
@@ -70,7 +69,6 @@ class App extends Component {
       <div>
         <header>
           <HeaderBar
-            categories={this.state.categoriesName}
             products={this.state.cart}
             currency={this.state.currency}
             handleAddProductQuantity={this.handleAddProductQuantity}
@@ -80,27 +78,13 @@ class App extends Component {
         </header>
         <main>
           <Switch>
-            {this.state.categoriesName.map((category) => {
-              return (
-                <Route
-                  key={category.name}
-                  path={`/${category.name}`}
-                  exact
-                  render={() => (
-                    <ProductList
-                      categoryName={category.name}
-                      currency={this.state.currency}
-                      setCart={this.setCart}
-                      cart={this.state.cart}
-                    />
-                  )}
-                />
-              );
-            })}
+            <Route path="/" exact>
+              <Redirect to="/all" />
+            </Route>
             <Route
               path={`/all`}
               exact
-              render={() => (
+              component={() => (
                 <ProductList
                   categoryName=""
                   currency={this.state.currency}
@@ -109,14 +93,34 @@ class App extends Component {
                 />
               )}
             />
-            );
-            {this.state.categoriesName.map((category) => {
+            <CategoriesNames>
+              {(categoryName) => {
+                return (
+                  <Route
+                    key={categoryName}
+                    path={`/${categoryName}`}
+                    exact
+                    component={() => (
+                      <ProductList
+                        categoryName={categoryName}
+                        currency={this.state.currency}
+                        setCart={this.setCart}
+                        cart={this.state.cart}
+                      />
+                    )}
+                  />
+                );
+              }}
+            </CategoriesNames>
+          </Switch>
+          <CategoriesNames>
+            {(categoryName) => {
               return (
                 <Route
-                  key={category.name}
-                  path={`/${category.name}/:productId`}
+                  key={categoryName}
+                  path={`/${categoryName}/:productId`}
                   exact
-                  render={({ match }) => (
+                  component={({ match }) => (
                     <ProductPage
                       match={match}
                       currency={this.state.currency}
@@ -126,22 +130,19 @@ class App extends Component {
                   )}
                 />
               );
-            })}
-            <Route
-              path={"/cart"}
-              render={() => (
-                <CartPage
-                  products={this.state.cart}
-                  currency={this.state.currency}
-                  handleAddProductQuantity={this.handleAddProductQuantity}
-                  handleRemoveProductQuantity={this.handleRemoveProductQuantity}
-                />
-              )}
-            />
-            <Route path="/" exact>
-              <Redirect to="/all" />
-            </Route>
-          </Switch>
+            }}
+          </CategoriesNames>
+          <Route
+            path={"/cart"}
+            component={() => (
+              <CartPage
+                products={this.state.cart}
+                currency={this.state.currency}
+                handleAddProductQuantity={this.handleAddProductQuantity}
+                handleRemoveProductQuantity={this.handleRemoveProductQuantity}
+              />
+            )}
+          />
         </main>
       </div>
     );

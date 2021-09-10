@@ -5,36 +5,29 @@ import CurrencyDropDown from "../CurrencyDropDown/CurrencyDropDown";
 import DetectClickOutside from "../shared/DetectClickOutside/DetectClickOutside";
 import { NavLink } from "react-router-dom";
 import CartOverlay from "../cart/CartOverlay/CartOverlay";
+import CategoriesNames from "../shared/CategoriesNames/CategoriesNames";
 
 class HeaderBar extends React.PureComponent {
-  renderCategoriesNames = () => {
-    return this.props.categories.map((category) => {
-      return (
-        <NavLink
-          key={category.name}
-          to={`/${category.name}`}
-          activeClassName={styles.navLinks}
-        >
-          {`${category.name}`.toUpperCase()}
-        </NavLink>
-      );
-    });
-  };
   render() {
-    const {
-      onCurrencyClick,
-      currency,
-      products,
-      handleRemoveProductQuantity,
-      handleAddProductQuantity,
-    } = this.props;
     return (
       <div className={styles.headerBarWrapper}>
         <div className={styles.navCategories}>
           <NavLink to="/all" activeClassName={styles.navLinks}>
             ALL
           </NavLink>
-          {this.renderCategoriesNames()}
+          <CategoriesNames>
+            {(categoryName) => {
+              return (
+                <NavLink
+                  key={categoryName}
+                  to={`/${categoryName}`}
+                  activeClassName={styles.navLinks}
+                >
+                  {`${categoryName}`.toUpperCase()}
+                </NavLink>
+              );
+            }}
+          </CategoriesNames>
         </div>
         <div className={styles.logo}>
           <img src={Logo} alt="Arrow with green background" />
@@ -43,8 +36,8 @@ class HeaderBar extends React.PureComponent {
           <DetectClickOutside
             render={(state) => (
               <CurrencyDropDown
-                currency={currency}
-                onCurrencyClick={onCurrencyClick}
+                currency={this.props.currency}
+                onCurrencyClick={this.props.onCurrencyClick}
                 detect={state}
               />
             )}
@@ -54,10 +47,12 @@ class HeaderBar extends React.PureComponent {
               render={(state) => (
                 <CartOverlay
                   detect={state}
-                  products={products}
-                  currency={currency}
-                  handleAddProductQuantity={handleAddProductQuantity}
-                  handleRemoveProductQuantity={handleRemoveProductQuantity}
+                  products={this.props.products}
+                  currency={this.props.currency}
+                  handleAddProductQuantity={this.props.handleAddProductQuantity}
+                  handleRemoveProductQuantity={
+                    this.props.handleRemoveProductQuantity
+                  }
                 />
               )}
             />
