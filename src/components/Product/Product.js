@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import classnames from "classnames";
 import styles from "./Product.module.css";
 import ProductCard from "../../Icons/ProductCard.svg";
 import { Link } from "react-router-dom";
 import { getPriceWithCurrentCurrency } from "../shared/utils/getPriceWithCurrentCurrency";
 
-class Product extends Component {
+class Product extends React.PureComponent {
   addProductToCartHandler = () => {
     const isAlreadyInCart = this.props.cart.find(
       (product) => product.id === this.props.product.id
@@ -20,17 +20,41 @@ class Product extends Component {
       });
     }
   };
+
+  renderOutOfStockLabel = (inStock) => {
+    return (
+      !inStock && (
+        <div className={styles.notInStock}>
+          <span>OUT OF STOCK</span>
+        </div>
+      )
+    );
+  };
+
+  renderProductCard = () => {
+    const { attributes, id, inStock, category } = this.props.product;
+    return attributes[0] ? (
+      <Link to={`/${category}/${id}`}>
+        <img src={ProductCard} alt="product cart" />
+      </Link>
+    ) : !inStock ? (
+      <Link to={`/${category}/${id}`}>
+        <img src={ProductCard} alt="product cart" />
+      </Link>
+    ) : (
+      <img
+        onClick={this.addProductToCartHandler}
+        src={ProductCard}
+        alt="product cart"
+      />
+    );
+  };
   render() {
-    const { name, gallery, attributes, id, prices, inStock, category } =
-      this.props.product;
+    const { name, gallery, id, prices, inStock, category } = this.props.product;
     return (
       <div className={styles.productWrapper}>
         <Link to={`/${category}/${id}`}>
-          {!inStock && (
-            <div className={styles.notInStock}>
-              <span>OUT OF STOCK</span>
-            </div>
-          )}
+          {this.renderOutOfStockLabel(inStock)}
           <div
             className={classnames(styles.product, {
               [styles.notInStockBox]: !inStock,
@@ -49,23 +73,7 @@ class Product extends Component {
             </p>
           </div>
         </Link>
-        <div className={styles.productCard}>
-          {attributes[0] ? (
-            <Link to={`/${category}/${id}`}>
-              <img src={ProductCard} alt="product cart" />
-            </Link>
-          ) : !inStock ? (
-            <Link to={`/${category}/${id}`}>
-              <img src={ProductCard} alt="product cart" />
-            </Link>
-          ) : (
-            <img
-              onClick={this.addProductToCartHandler}
-              src={ProductCard}
-              alt="product cart"
-            />
-          )}
-        </div>
+        <div className={styles.productCard}>{this.renderProductCard()}</div>
       </div>
     );
   }

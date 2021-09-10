@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Query } from "@apollo/client/react/components";
 import { getProduct } from "../../GraphQL/queries";
 import Button from "../shared/Button/Button";
@@ -7,7 +7,7 @@ import styles from "./ProductPage.module.css";
 import Circle from "../shared/Circle/Circle";
 import { getPriceWithCurrentCurrency } from "../shared/utils/getPriceWithCurrentCurrency";
 import { sanitize } from "dompurify";
-class ProductPage extends Component {
+class ProductPage extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -105,6 +105,102 @@ class ProductPage extends Component {
     }
   };
 
+  renderProductImages = (gallery) => {
+    return gallery.map((image) => {
+      return (
+        <img
+          src={image}
+          key={image}
+          className={styles.smallImage}
+          alt=""
+          onClick={() => this.setState({ selectedImagePreview: image })}
+        />
+      );
+    });
+  };
+
+  renderOutOfStock = (inStock) => {
+    return (
+      !inStock && (
+        <div className={styles.notInStock}>
+          <span>OUT OF STOCK</span>
+        </div>
+      )
+    );
+  };
+
+  isImagePreviewSelected = (gallery) => {
+    return this.state.selectedImagePreview === ""
+      ? gallery[0]
+      : this.state.selectedImagePreview;
+  };
+
+  isTypeSwatch = (attribute, item) => {
+    return attribute.type === "swatch" ? (
+      <Circle color={item.value} size="medium" />
+    ) : (
+      <Button
+        buttonType="button"
+        variant="primary"
+        isIcon={false}
+        size="medium"
+        id={`${attribute.id}${item.id}`}
+        stylesProps={{
+          pointerEvents: "none",
+        }}
+      >
+        {item.value}
+      </Button>
+    );
+  };
+
+  renderAttributeItems = (attribute) => {
+    return attribute.items.map((item) => {
+      return (
+        <div key={item.id}>
+          <input
+            type="radio"
+            name={attribute.id}
+            id={`${attribute.id}${item.id}`}
+            value={item.value}
+            onChange={() =>
+              this.handleAttributesItems({
+                selectedItem: item,
+                attributeId: attribute.id,
+                attributeType: attribute.type,
+                attributeName: attribute.name,
+              })
+            }
+          />
+          <label className={styles.item} htmlFor={`${attribute.id}${item.id}`}>
+            {this.isTypeSwatch(attribute, item)}
+          </label>
+        </div>
+      );
+    });
+  };
+
+  renderProductAttributes = (attributes) => {
+    return attributes[0]
+      ? attributes.map((attribute) => {
+          return (
+            <form
+              id={attribute.id}
+              key={attribute.id}
+              className={styles.attributesContainer}
+            >
+              <div className={styles.attribute}>
+                <p>{`${attribute.name}:`}</p>
+                <div className={styles.itemsContainer}>
+                  {this.renderAttributeItems(attribute)}
+                </div>
+              </div>
+            </form>
+          );
+        })
+      : null;
+  };
+
   render() {
     const {
       currency: { currentCurrency, symbolCurrency },
@@ -130,32 +226,12 @@ class ProductPage extends Component {
             <div className={styles.pageContainer}>
               <div className={styles.galleryContainer}>
                 <div className={styles.previewImages}>
-                  {gallery.map((image) => {
-                    return (
-                      <img
-                        src={image}
-                        key={image}
-                        className={styles.smallImage}
-                        alt=""
-                        onClick={() =>
-                          this.setState({ selectedImagePreview: image })
-                        }
-                      />
-                    );
-                  })}
+                  {this.renderProductImages(gallery)}
                 </div>
                 <div className={styles.largeImage}>
-                  {!inStock && (
-                    <div className={styles.notInStock}>
-                      <span>OUT OF STOCK</span>
-                    </div>
-                  )}
+                  {this.renderOutOfStock(inStock)}
                   <img
-                    src={
-                      this.state.selectedImagePreview === ""
-                        ? gallery[0]
-                        : this.state.selectedImagePreview
-                    }
+                    src={this.isImagePreviewSelected(gallery)}
                     className={classnames({
                       [styles.notInStockBox]: !inStock,
                     })}
@@ -166,67 +242,7 @@ class ProductPage extends Component {
               <div className={styles.productInfo}>
                 <h1>{brand}</h1>
                 <h2>{name}</h2>
-                {attributes[0]
-                  ? attributes.map((attribute) => {
-                      return (
-                        <form
-                          id={attribute.id}
-                          key={attribute.id}
-                          className={styles.attributesContainer}
-                        >
-                          <div className={styles.attribute}>
-                            <p>{`${attribute.name}:`}</p>
-                            <div className={styles.itemsContainer}>
-                              {attribute.items.map((item, index) => {
-                                return (
-                                  <div key={item.id}>
-                                    <input
-                                      type="radio"
-                                      name={attribute.id}
-                                      id={`${attribute.id}${item.id}`}
-                                      value={item.value}
-                                      onChange={() =>
-                                        this.handleAttributesItems({
-                                          selectedItem: item,
-                                          attributeId: attribute.id,
-                                          attributeType: attribute.type,
-                                          attributeName: attribute.name,
-                                        })
-                                      }
-                                    />
-                                    <label
-                                      className={styles.item}
-                                      htmlFor={`${attribute.id}${item.id}`}
-                                    >
-                                      {attribute.type === "swatch" ? (
-                                        <Circle
-                                          color={item.value}
-                                          size="medium"
-                                        />
-                                      ) : (
-                                        <Button
-                                          buttonType="button"
-                                          variant="primary"
-                                          isIcon={false}
-                                          size="medium"
-                                          id={`${attribute.id}${item.id}`}
-                                          stylesProps={{
-                                            pointerEvents: "none",
-                                          }}
-                                        >
-                                          {item.value}
-                                        </Button>
-                                      )}
-                                    </label>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </form>
-                      );
-                    })
-                  : null}
+                {this.renderProductAttributes(attributes)}
                 <div className={styles.price}>
                   <p className={styles.priceHeader}>PRICES:</p>
 
