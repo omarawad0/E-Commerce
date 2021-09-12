@@ -3,14 +3,17 @@ import styles from "./Circle.module.css";
 import classnames from "classnames";
 
 class Circle extends React.PureComponent {
+  circleClasses = classnames(styles.circle, {
+    [styles.swatchMini]: this.props.size === "mini",
+    [styles.swatchMedium]: this.props.size === "medium",
+  });
   render() {
-    const { color, size, children } = this.props;
-    const circleClasses = classnames(styles.circle, {
-      [styles.swatchMini]: size === "mini",
-      [styles.swatchMedium]: size === "medium",
-    });
+    const { color, children } = this.props;
     return (
-      <span className={circleClasses} style={{ backgroundColor: `${color}` }}>
+      <span
+        className={this.circleClasses}
+        style={{ backgroundColor: `${color}` }}
+      >
         {children}
       </span>
     );

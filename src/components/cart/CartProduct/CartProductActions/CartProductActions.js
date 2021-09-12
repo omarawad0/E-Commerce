@@ -16,6 +16,11 @@ class CartProductActions extends React.PureComponent {
     };
   }
 
+  productImageClasses = classnames(styles.productImage, {
+    [styles.ImageCartPage]: this.props.size === "medium",
+    [styles.ImageCartMini]: this.props.size === "mini",
+  });
+
   gallerySwitcher = (e) => {
     const galleryLength = this.props.gallery.length - 1;
 
@@ -48,10 +53,7 @@ class CartProductActions extends React.PureComponent {
   };
   render() {
     const { size, id, gallery, quantity, name } = this.props;
-    const productImageClasses = classnames(styles.productImage, {
-      [styles.ImageCartPage]: size === "medium",
-      [styles.ImageCartMini]: size === "mini",
-    });
+
     return (
       <div className={styles.productCount}>
         <div className={styles.AddOrRemoveQuantity}>
@@ -91,7 +93,7 @@ class CartProductActions extends React.PureComponent {
           <img
             src={gallery[this.state.galleryCount]}
             alt={name}
-            className={productImageClasses}
+            className={this.productImageClasses}
           />
         </div>
       </div>
