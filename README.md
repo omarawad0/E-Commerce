@@ -5,6 +5,9 @@
 
 ## the design implemented: [Figma](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs)
 
+## Demo
+- ![e-commerce](https://user-images.githubusercontent.com/57134858/136223231-f05fe6ca-1033-4029-815c-b1a32bb592ef.gif)
+
 ## Required:
 
 - Using React.
