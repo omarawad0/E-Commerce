@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/E-Commerce/static/css/main.37d3a8d2.chunk.css",
+    "main.js": "/E-Commerce/static/js/main.819375ae.chunk.js",
+    "main.js.map": "/E-Commerce/static/js/main.819375ae.chunk.js.map",
+    "runtime-main.js": "/E-Commerce/static/js/runtime-main.2e9c10a1.js",
+    "runtime-main.js.map": "/E-Commerce/static/js/runtime-main.2e9c10a1.js.map",
+    "static/js/2.c74d9eb2.chunk.js": "/E-Commerce/static/js/2.c74d9eb2.chunk.js",
+    "static/js/2.c74d9eb2.chunk.js.map": "/E-Commerce/static/js/2.c74d9eb2.chunk.js.map",
+    "index.html": "/E-Commerce/index.html",
+    "static/css/main.37d3a8d2.chunk.css.map": "/E-Commerce/static/css/main.37d3a8d2.chunk.css.map",
+    "static/js/2.c74d9eb2.chunk.js.LICENSE.txt": "/E-Commerce/static/js/2.c74d9eb2.chunk.js.LICENSE.txt",
+    "static/media/ArrowDown.90b7f083.svg": "/E-Commerce/static/media/ArrowDown.90b7f083.svg",
+    "static/media/ArrowUp.a4f25be7.svg": "/E-Commerce/static/media/ArrowUp.a4f25be7.svg",
+    "static/media/ChevronLeft.b726ff4c.svg": "/E-Commerce/static/media/ChevronLeft.b726ff4c.svg",
+    "static/media/ChevronRight.af156e3e.svg": "/E-Commerce/static/media/ChevronRight.af156e3e.svg",
+    "static/media/EmptyCart.d6007204.svg": "/E-Commerce/static/media/EmptyCart.d6007204.svg",
+    "static/media/Logo.18e336cb.svg": "/E-Commerce/static/media/Logo.18e336cb.svg",
+    "static/media/Minus.9b3d120f.svg": "/E-Commerce/static/media/Minus.9b3d120f.svg",
+    "static/media/Plus.89fe7bf6.svg": "/E-Commerce/static/media/Plus.89fe7bf6.svg",
+    "static/media/ProductCard.a4e9444e.svg": "/E-Commerce/static/media/ProductCard.a4e9444e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2e9c10a1.js",
+    "static/js/2.c74d9eb2.chunk.js",
+    "static/css/main.37d3a8d2.chunk.css",
+    "static/js/main.819375ae.chunk.js"
+  ]
+}
