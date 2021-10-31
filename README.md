@@ -1,4 +1,3 @@
-
 ### `yarn start` to start the react client
 
 ## clone this [endpoint](https://github.com/scandiweb/junior-react-endpoint) and yarn start the GraphQL endpoint
@@ -6,10 +5,10 @@
 ## the design implemented: [Figma](https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs)
 
 ## Demo
+
 - ![e-commerce](https://user-images.githubusercontent.com/57134858/136223231-f05fe6ca-1033-4029-815c-b1a32bb592ef.gif)
 
-In this project i used only React class components and old version of Apollo and Graphql to be able to work with legacy code
-
+### In this project i used only React class components and old version of Apollo and Graphql to be able to work with legacy code
 
 ## Functionality
 
