@@ -26,7 +26,7 @@
 }
 
 .notInStockBox {
-  opacity: 50%;
+  opacity: 0.5;
 }
 .notInStock {
   font-size: 2.4rem;
