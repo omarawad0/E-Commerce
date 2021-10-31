@@ -6,7 +6,7 @@
 
 ## Live
 
-## [Website](https://e-commerce-graphy.netlify.app/)
+## [Website](https://omarawad0.github.io/E-Commerce/)
 
 ## Demo
 
