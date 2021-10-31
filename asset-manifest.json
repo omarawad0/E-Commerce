@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/E-Commerce/static/css/main.37d3a8d2.chunk.css",
+    "main.css": "/E-Commerce/static/css/main.3fd551a7.chunk.css",
     "main.js": "/E-Commerce/static/js/main.da530d96.chunk.js",
     "main.js.map": "/E-Commerce/static/js/main.da530d96.chunk.js.map",
     "runtime-main.js": "/E-Commerce/static/js/runtime-main.2e9c10a1.js",
@@ -8,7 +8,7 @@
     "static/js/2.54eedd19.chunk.js": "/E-Commerce/static/js/2.54eedd19.chunk.js",
     "static/js/2.54eedd19.chunk.js.map": "/E-Commerce/static/js/2.54eedd19.chunk.js.map",
     "index.html": "/E-Commerce/index.html",
-    "static/css/main.37d3a8d2.chunk.css.map": "/E-Commerce/static/css/main.37d3a8d2.chunk.css.map",
+    "static/css/main.3fd551a7.chunk.css.map": "/E-Commerce/static/css/main.3fd551a7.chunk.css.map",
     "static/js/2.54eedd19.chunk.js.LICENSE.txt": "/E-Commerce/static/js/2.54eedd19.chunk.js.LICENSE.txt",
     "static/media/ArrowDown.90b7f083.svg": "/E-Commerce/static/media/ArrowDown.90b7f083.svg",
     "static/media/ArrowUp.a4f25be7.svg": "/E-Commerce/static/media/ArrowUp.a4f25be7.svg",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.2e9c10a1.js",
     "static/js/2.54eedd19.chunk.js",
-    "static/css/main.37d3a8d2.chunk.css",
+    "static/css/main.3fd551a7.chunk.css",
     "static/js/main.da530d96.chunk.js"
   ]
 }
