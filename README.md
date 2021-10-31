@@ -8,31 +8,16 @@
 ## Demo
 - ![e-commerce](https://user-images.githubusercontent.com/57134858/136223231-f05fe6ca-1033-4029-815c-b1a32bb592ef.gif)
 
-## Required:
+In this project i used only React class components and old version of Apollo and Graphql to be able to work with legacy code
 
-- Using React.
-- Only Class components.
-- Create-react-app to scaffold the application.
 
-## Allowed:
-
-- State management libraries (e.g. Redux, Recoil)
-- CSS-in-JS approach allowers (e.g. styled-components)
-
-## Prohibited:
-
-- UI libraries (e.g. Tailwind, Material UI, Ant Design)
-- Functional components, due to the reasons described above.
-
-## Functionality requirements
+## Functionality
 
 - PLP - product listing page, a.k.a. category page
 - PDP - product description page, a.k.a. product page
 - Cart page + Cart overlay (minicart)
 
 ## Details
-
-See some more specific information on the main requirements below. Remember - if something is in the design, but is not explicitly described here or above, it should be implemented anyways.
 
 - Ability to add/remove products and change their amounts in cart - on the cart page itself, PLP and PDP should be provided.
 - For products that have various options (attributes) - the options should be selected.
