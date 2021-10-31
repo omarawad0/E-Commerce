@@ -4,14 +4,14 @@ import "./index.css";
 import App from "./App";
 import { ApolloProvider } from "@apollo/client";
 import client from "./GraphQL/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
