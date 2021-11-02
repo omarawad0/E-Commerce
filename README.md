@@ -12,8 +12,6 @@
 
 ## -In this project i used only React class components and old version of Apollo and Graphql to be able to work with legacy code
 
-### In this project i used only React class components and old version of Apollo and Graphql to be able to work with legacy code
-
 ## Functionality
 
 - PLP - product listing page, a.k.a. category page
