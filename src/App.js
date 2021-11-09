@@ -84,7 +84,7 @@ class App extends Component {
             <Route
               path={`/all`}
               exact
-              component={() => (
+              render={() => (
                 <ProductList
                   categoryName=""
                   currency={this.state.currency}
@@ -100,7 +100,7 @@ class App extends Component {
                     key={categoryName}
                     path={`/${categoryName}`}
                     exact
-                    component={() => (
+                    render={() => (
                       <ProductList
                         categoryName={categoryName}
                         currency={this.state.currency}
@@ -120,7 +120,7 @@ class App extends Component {
                   key={categoryName}
                   path={`/${categoryName}/:productId`}
                   exact
-                  component={({ match }) => (
+                  render={({ match }) => (
                     <ProductPage
                       match={match}
                       currency={this.state.currency}
@@ -134,7 +134,7 @@ class App extends Component {
           </CategoriesNames>
           <Route
             path={"/cart"}
-            component={() => (
+            render={() => (
               <CartPage
                 products={this.state.cart}
                 currency={this.state.currency}
