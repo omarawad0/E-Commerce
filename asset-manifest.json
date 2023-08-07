@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/E-Commerce/static/css/main.f2715f52.chunk.css",
-    "main.js": "/E-Commerce/static/js/main.696a0148.chunk.js",
-    "main.js.map": "/E-Commerce/static/js/main.696a0148.chunk.js.map",
+    "main.js": "/E-Commerce/static/js/main.fc8fc290.chunk.js",
+    "main.js.map": "/E-Commerce/static/js/main.fc8fc290.chunk.js.map",
     "runtime-main.js": "/E-Commerce/static/js/runtime-main.2e9c10a1.js",
     "runtime-main.js.map": "/E-Commerce/static/js/runtime-main.2e9c10a1.js.map",
-    "static/js/2.54eedd19.chunk.js": "/E-Commerce/static/js/2.54eedd19.chunk.js",
-    "static/js/2.54eedd19.chunk.js.map": "/E-Commerce/static/js/2.54eedd19.chunk.js.map",
+    "static/js/2.756006e1.chunk.js": "/E-Commerce/static/js/2.756006e1.chunk.js",
+    "static/js/2.756006e1.chunk.js.map": "/E-Commerce/static/js/2.756006e1.chunk.js.map",
     "index.html": "/E-Commerce/index.html",
     "static/css/main.f2715f52.chunk.css.map": "/E-Commerce/static/css/main.f2715f52.chunk.css.map",
-    "static/js/2.54eedd19.chunk.js.LICENSE.txt": "/E-Commerce/static/js/2.54eedd19.chunk.js.LICENSE.txt",
+    "static/js/2.756006e1.chunk.js.LICENSE.txt": "/E-Commerce/static/js/2.756006e1.chunk.js.LICENSE.txt",
     "static/media/ArrowDown.766d7b11.svg": "/E-Commerce/static/media/ArrowDown.766d7b11.svg",
     "static/media/ArrowUp.f50a5cf5.svg": "/E-Commerce/static/media/ArrowUp.f50a5cf5.svg",
     "static/media/ChevronLeft.d5bb5aa4.svg": "/E-Commerce/static/media/ChevronLeft.d5bb5aa4.svg",
@@ -18,12 +18,13 @@
     "static/media/Logo.3cedebe1.svg": "/E-Commerce/static/media/Logo.3cedebe1.svg",
     "static/media/Minus.9b3d120f.svg": "/E-Commerce/static/media/Minus.9b3d120f.svg",
     "static/media/Plus.89fe7bf6.svg": "/E-Commerce/static/media/Plus.89fe7bf6.svg",
-    "static/media/ProductCard.c2e3684b.svg": "/E-Commerce/static/media/ProductCard.c2e3684b.svg"
+    "static/media/ProductCard.c2e3684b.svg": "/E-Commerce/static/media/ProductCard.c2e3684b.svg",
+    "static/media/getFetch.cjs": "/E-Commerce/static/media/getFetch.5fde86e3.cjs"
   },
   "entrypoints": [
     "static/js/runtime-main.2e9c10a1.js",
-    "static/js/2.54eedd19.chunk.js",
+    "static/js/2.756006e1.chunk.js",
     "static/css/main.f2715f52.chunk.css",
-    "static/js/main.696a0148.chunk.js"
+    "static/js/main.fc8fc290.chunk.js"
   ]
 }
