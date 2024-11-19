@@ -14,7 +14,7 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: "https://outstanding-cod-handbag.cyclic.app/" }),
+  new HttpLink({ uri: "https://ecommercegraphqlendpoint-ael063ns.b4a.run/" }),
 ]);
 
 const client = new ApolloClient({
